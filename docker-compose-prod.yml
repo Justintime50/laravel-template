@@ -1,0 +1,6 @@
+services:
+  app:
+    labels:
+      - traefik.frontend.rule=Host:app.com,www.app.com
+    volumes:
+      - ./src/storage:/var/www/html/storage
