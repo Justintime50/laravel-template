@@ -30,8 +30,12 @@ rm install.sh
 
 ## Usage
 
+1. Setup [Traefik](https://github.com/Justintime50/multisite-docker-server) to manage routing and load balancing
+1. Setup [DNSMasq](https://gist.github.com/Justintime50/882403451e3231a6c088743e0e66acb5) so you don't have to manage your `/etc/hosts` file while using Traefik for local development
+1. Spin up your Laravel app and database with the command below (this assumes you are using Traefik and have you hosts configured, see above links for more details)
+
 ```bash
-# Spin up your Laravel app and database (this assumes you are using Traefik)
+# Spin up Docker app and database
 docker-compose up -d
 ```
 
