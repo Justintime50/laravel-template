@@ -7,7 +7,7 @@ A Laravel project template to save you time and energy.
 [![Build](https://github.com/Justintime50/laravel-template/workflows/build/badge.svg)](https://github.com/Justintime50/laravel-template/actions)
 [![Licence](https://img.shields.io/github/license/justintime50/laravel-template)](LICENSE)
 
-<img src="assets/showcase.png" alt="Showcase">
+<img src="https://raw.githubusercontent.com/justintime50/assets/main/src/laravel-template/showcase.png" alt="Showcase">
 
 </div>
 
@@ -15,7 +15,7 @@ A Laravel project template to save you time and energy.
 
 1. Click the Use this template button at the top of this project's GitHub page, it looks like this:
 
-<img src="assets/use_template_button.png" alt="Use Template Button">
+<img src="https://raw.githubusercontent.com/justintime50/assets/main/src/templates/use_template_button.png" alt="Showcase">
 
 2. After using the template, clone the repo
 3. Laravel Template assumes you have `composer` installed globally:
