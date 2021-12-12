@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Run sh-checker for bash
+      - name: Run sh-checker
         uses: luizm/action-sh-checker@master
         env:
           SHFMT_OPTS: -i 4 -d
