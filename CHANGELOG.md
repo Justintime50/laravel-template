@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.0 (2021-12-11)
+
+* Refactor project fixing various items and cleaning up more
+
 ## v0.1.1 (2021-04-15)
 
 * Added links to guides or repos that describe how to setup `Traefik` and `DNSMasq` and clarified the setup in the README file
