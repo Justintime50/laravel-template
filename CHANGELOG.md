@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.1 (2022-02-14)
+
+* Various fixes across the project
+
 ## v0.2.0 (2021-12-11)
 
 * Refactor project fixing various items and cleaning up more

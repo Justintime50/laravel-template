@@ -1,5 +1,2 @@
 .DS_Store
-db
-.env
-init-db.env
-src
+*.env
