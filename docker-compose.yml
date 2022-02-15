@@ -15,7 +15,7 @@ services:
       - app-db
       - app-db-replica
   app-db:
-    image: 'bitnami/mariadb:10.6.5'
+    image: 'bitnami/mariadb:10.6.7'
     restart: always
     volumes:
       - database-data:/bitnami/mariadb
@@ -29,7 +29,7 @@ services:
     labels:
       - traefik.enable=false
   app-db-replica:
-    image: 'bitnami/mariadb:10.6.5'
+    image: 'bitnami/mariadb:10.6.7'
     restart: always
     depends_on:
       - app-db

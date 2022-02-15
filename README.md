@@ -13,7 +13,7 @@ A Laravel project template to save you time and energy.
 
 ## Setup Template
 
-Click the Use this template button at the top of this project's GitHub page, it looks like this:
+Click the `Use this template` button at the top of this project's GitHub page, it looks like this:
 
 <img src="https://raw.githubusercontent.com/justintime50/assets/main/src/templates/use_template_button.png" alt="Showcase">
 
