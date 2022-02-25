@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.3.0 (2022-02-24)
+
+* Various boilerplate added for linting and CI configuration
+
 ## v0.2.1 (2022-02-14)
 
 * Various fixes across the project

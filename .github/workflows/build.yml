@@ -3,12 +3,30 @@ name: build
 on: [push, pull_request]
 
 jobs:
-  sh-checker:
+  docker:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Run sh-checker
-        uses: luizm/action-sh-checker@master
-        env:
-          SHFMT_OPTS: -i 4 -d
+      - name: Setup Traefik
+        run: docker network create traefik
+      - name: Setup Docker container
+        run: |
+          cp src/.env-example src/.env
+          ./setup.sh
+          docker ps | grep -q app-app-1
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+      - name: Install Composer
+        run: cd src && composer self-update
+      - name: Install Dependencies
+        run: cd src && composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      - name: Lint
+        run: cd src && composer lint

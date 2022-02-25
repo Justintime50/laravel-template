@@ -34,6 +34,18 @@ Once Laravel is installed, replace text as needed throughout the project:
 1. Update the `CHANGELOG`
 1. Delete this `README` and create a new one for your project
 
+In the `composer.json` file, add the following:
+
+1. `"bin-dir": "bin"` to the `config` section
+1. The folllowing each to the `scripts` section:
+
+```json
+"coverage": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-html clover.html --coverage-clover clover.xml",
+"fix": "./bin/phpcbf",
+"lint": "./bin/phpcs",
+"test": "./bin/phpunit",
+```
+
 ## Install
 
 ```bash
