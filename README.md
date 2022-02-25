@@ -30,7 +30,7 @@ Once Laravel is installed, replace text as needed throughout the project:
 1. Replace all instances of `app` with the name of your project (found in docker-compose files)
 1. Replace all values in `src/.env` and `database.env` to reflect the values you need
 1. Update name in `LICENSE`
-1. Configure the `.github/workflows/build.yml` file
+1. Uncomment and configure the `.github/workflows/build.yml` file
 1. Update the `CHANGELOG`
 1. Delete this `README` and create a new one for your project
 
