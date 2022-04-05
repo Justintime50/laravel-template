@@ -25,6 +25,8 @@ Click the `Use this template` button at the top of this project's GitHub page, i
 composer create-project laravel/laravel src
 ```
 
+**Text Replacement**
+
 Once Laravel is installed, replace text as needed throughout the project:
 
 1. Replace all instances of `app` with the name of your project (found in docker-compose files)
@@ -33,6 +35,12 @@ Once Laravel is installed, replace text as needed throughout the project:
 1. Uncomment and configure the `.github/workflows/build.yml` file
 1. Update the `CHANGELOG`
 1. Delete this `README` and create a new one for your project
+
+**Customization**
+
+1. Change the `session` driver from file based to database
+1. Strip out unnecessary frontend Node packages (Lodash, Vue, etc) that won't get used
+1. Change the `cache` driver from file based to Redis (optional)
 
 In the `composer.json` file, add the following:
 
