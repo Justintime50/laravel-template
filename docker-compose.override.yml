@@ -1,6 +1,6 @@
 services:
   app:
     labels:
-      - traefik.frontend.rule=Host:app.localhost
+      - "traefik.http.routers.app.rule=Host(`app.localhost`)"
     volumes:
       - ./src:/var/www/html
