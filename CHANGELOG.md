@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.4.0 (2022-08-24)
+
+* Bumps Docker image and docker-compose config
+
 ## v0.3.0 (2022-02-24)
 
 * Various boilerplate added for linting and CI configuration

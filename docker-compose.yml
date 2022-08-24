@@ -1,3 +1,4 @@
+version: "3.8"
 services:
   app:
     build: .
@@ -15,9 +16,9 @@ services:
     image: 'mariadb:10.8.2'
     restart: always
     volumes:
-      - database-data:/bitnami/mariadb
+      - database-data:/var/lib/mysql
     env_file:
-      - database.env
+      - .env
     networks:
       - app
 

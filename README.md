@@ -13,7 +13,7 @@ A Laravel project template to save you time and energy.
 
 ## Setup Template
 
-Click the `Use this template` button at the top of this project's GitHub page, it looks like this:
+1. Click the `Use this template` button at the top of this project's GitHub page, it looks like this:
 
 <img src="https://raw.githubusercontent.com/justintime50/assets/main/src/templates/use_template_button.png" alt="Showcase">
 
@@ -25,7 +25,7 @@ Click the `Use this template` button at the top of this project's GitHub page, i
 composer create-project laravel/laravel src
 ```
 
-**Text Replacement**
+### Text Replacement
 
 Once Laravel is installed, replace text as needed throughout the project:
 
@@ -36,7 +36,7 @@ Once Laravel is installed, replace text as needed throughout the project:
 1. Update the `CHANGELOG`
 1. Delete this `README` and create a new one for your project
 
-**Customization**
+### Customization
 
 1. Change the `session` driver from file based to database
 1. Strip out unnecessary frontend Node packages (Lodash, Vue, etc) that won't get used
@@ -67,7 +67,7 @@ cp src/.env-example src/.env && cp database.env-example database.env
 
 ## Usage
 
-1. Setup [Traefik](https://github.com/Justintime50/multisite-docker-server) to manage routing and load balancing
+1. Setup [Traefik](https://gist.github.com/Justintime50/0721f421ac2173bd80f8a29805876bba) to manage routing and load balancing
 1. Setup [DNSMasq](https://gist.github.com/Justintime50/882403451e3231a6c088743e0e66acb5) so you don't have to manage your `/etc/hosts` file while using Traefik for local development
 
 ## Deploy
