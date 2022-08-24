@@ -29,23 +29,24 @@ composer create-project laravel/laravel src
 
 Once Laravel is installed, replace text as needed throughout the project:
 
-1. Replace all instances of `app` with the name of your project (found in docker-compose files)
-1. Replace all values in `src/.env` and `database.env` to reflect the values you need
-1. Update name in `LICENSE`
-1. Uncomment and configure the `.github/workflows/build.yml` file
-1. Update the `CHANGELOG`
-1. Delete this `README` and create a new one for your project
+1. Replace all instances of `laravel-template` with the name of your project (found in docker-compose files)
+2. Replace all values in `src/.env`  to reflect the values you need
+3. Update name in `LICENSE`
+4. Uncomment and configure the `.github/workflows/build.yml` file
+5. Update the `CHANGELOG`
+6. Delete this `README` and create a new one for your project
 
 ### Customization
 
 1. Change the `session` driver from file based to database
-1. Strip out unnecessary frontend Node packages (Lodash, Vue, etc) that won't get used
-1. Change the `cache` driver from file based to Redis (optional)
+2. Strip out unnecessary frontend Node packages (Lodash, Vue, etc) that won't get used
+3. Change the `cache` driver from file based to Redis (optional)
 
 In the `composer.json` file, add the following:
 
 1. `"bin-dir": "bin"` to the `config` section
-1. The folllowing each to the `scripts` section:
+2. Install PHP CodeSniffer: `composer require squizlabs/php_codesniffer`
+3. The folllowing each to the `scripts` section:
 
 ```json
 "coverage": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-html clover.html --coverage-clover clover.xml",

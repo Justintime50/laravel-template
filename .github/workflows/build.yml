@@ -14,7 +14,7 @@
 #         run: |
 #           cp src/.env-example src/.env && cp .env-example .env
 #           ./setup.sh
-#           docker ps | grep -q app-app-1
+#           docker ps | grep -q laravel-template-laravel-template-1
 #   lint:
 #     runs-on: ubuntu-latest
 #     steps:
@@ -41,4 +41,4 @@
 #           webhook_type: "json-extended"
 #           webhook_url: ${{ secrets.WEBHOOK_URL }}
 #           webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
-#           data: '{ "pipeline": "deploy", "prod_compose": true, "healthcheck": ["app-app-1", "app-app-2", "app-app-db-1"] }'
+#           data: '{ "pipeline": "deploy", "prod_compose": true, "healthcheck": ["laravel-template-laravel-template-1", "laravel-template-laravel-template-2", "laravel-template-laravel-template-db-1"] }'
