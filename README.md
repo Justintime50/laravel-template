@@ -61,7 +61,7 @@ In the `composer.json` file, add the following:
 ```bash
 # Copy the env files, and edit as needed
 mv src/.env.example src/.env-example
-cp src/.env-example src/.env && cp database.env-example database.env
+cp src/.env-example src/.env && cp .env-example .env
 
 # Run the setup script which will bootstrap all the requirements, spin up the service, and migrate the database
 ./setup.sh
