@@ -46,12 +46,13 @@ In the `composer.json` file, add the following:
 
 1. `"bin-dir": "bin"` to the `config` section
 2. Install PHP CodeSniffer: `composer require squizlabs/php_codesniffer`
-3. The folllowing each to the `scripts` section:
+3. Install Justintime50 PHP styles via `npm install --save-dev justintime50-styles`
+4. The folllowing each to the `scripts` section:
 
 ```json
 "coverage": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-html clover.html --coverage-clover clover.xml",
-"fix": "./bin/phpcbf",
-"lint": "./bin/phpcs",
+"fix": "./bin/phpcbf --standard=./node_modules/justintime50-styles/src/php/phpcs.xml .",
+"lint": "./bin/phpcs --standard=./node_modules/justintime50-styles/src/php/phpcs.xml .",
 "test": "./bin/phpunit",
 ```
 
