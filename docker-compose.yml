@@ -1,18 +1,18 @@
 version: "3.8"
 services:
-  app:
+  laravel-template:
     build: .
     restart: always
     networks:
       - traefik
-      - app
+      - laravel-template
     labels:
       - traefik.enable=true
     env_file:
       - src/.env
     depends_on:
-      - app-db
-  app-db:
+      - laravel-template-db
+  laravel-template-db:
     image: 'mariadb:10.8.2'
     restart: always
     volumes:
@@ -20,7 +20,7 @@ services:
     env_file:
       - .env
     networks:
-      - app
+      - laravel-template
 
 volumes:
   database-data:
@@ -29,5 +29,5 @@ volumes:
 networks:
   traefik:
     name: traefik
-  app:
-    name: app
+  laravel-template:
+    name: laravel-template

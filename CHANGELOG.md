@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.5.0 (2022-12-31)
+
+- Bumps to PHP 8.2
+- Corrects text replacement of `app` to `laravel-template`
+- Fixes composer commands needed in README
+
 ## v0.4.1 (2022-08-24)
 
 - Ignore bin and vendor dirs

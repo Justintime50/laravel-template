@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  app:
+  laravel-template:
     deploy:
       replicas: 2
       resources:
@@ -16,13 +16,13 @@ services:
       timeout: 10s
       retries: 3
     labels:
-      - "traefik.http.routers.app.rule=Host(`app.com`) || Host(`www.app.com`)"
+      - "traefik.http.routers.app.rule=Host(`laravel-template.com`) || Host(`www.laravel-template.com`)"
       - "traefik.http.routers.app.tls=true"
       - "traefik.http.routers.app.tls.certresolver=letsencrypt"
     volumes:
       - ./src/storage/logs:/var/www/html/storage/logs
       - ./src/storage/app/public:/var/www/html/storage/app/public
-  app-db:
+  laravel-template-db:
     deploy:
       resources:
         limits:
