@@ -13,7 +13,7 @@ services:
     depends_on:
       - laravel-template-db
   laravel-template-db:
-    image: 'mariadb:10.8.2'
+    image: 'mariadb:10.10.2'
     restart: always
     volumes:
       - database-data:/var/lib/mysql
