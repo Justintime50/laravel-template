@@ -2,6 +2,6 @@ version: "3.8"
 services:
   laravel-template:
     labels:
-      - "traefik.http.routers.app.rule=Host(`app.localhost`)"
+      - "traefik.http.routers.app.rule=Host(`laravel-template.localhost`)"
     volumes:
       - ./src:/var/www/html
