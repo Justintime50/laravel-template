@@ -45,7 +45,7 @@ Once Laravel is installed, replace text as needed throughout the project:
 In the `composer.json` file, add the following:
 
 1. `"bin-dir": "bin"` to the `config` section
-2. Install PHP CodeSniffer: `composer require squizlabs/php_codesniffer`
+2. Install PHP CodeSniffer: `composer require --dev squizlabs/php_codesniffer`
 3. Install Justintime50 PHP styles via `npm install --save-dev justintime50-styles`
 4. The folllowing each to the `scripts` section:
 
