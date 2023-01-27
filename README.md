@@ -39,8 +39,7 @@ Once Laravel is installed, replace text as needed throughout the project:
 ### Customization
 
 1. Change the `session` driver from file based to database
-2. Strip out unnecessary frontend Node packages (Lodash, Vue, etc) that won't get used
-3. Change the `cache` driver from file based to Redis (optional)
+2. (Optional) Change the `cache` driver from file based to Redis
 
 In the `composer.json` file, add the following:
 
