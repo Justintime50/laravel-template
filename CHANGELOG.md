@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.5.1 (2023-01-28)
+
+- Clarifies various README instructions
+- Update Docker Compose file text replacements
+- Bumps Dockerfile to use new setup that includes NPM image
+
 ## v0.5.0 (2022-12-31)
 
 - Bumps to PHP 8.2

@@ -53,11 +53,11 @@ In the `composer.json` file, add the following:
 "db-clean": "docker exec -t laravel-template-laravel-template-1 php artisan db:wipe",
 "fix": "./bin/phpcbf --standard=./node_modules/justintime50-styles/src/php/phpcs.xml .",
 "lint": "./bin/phpcs --standard=./node_modules/justintime50-styles/src/php/phpcs.xml .",
-"migrate-fresh": "docker exec -t laravel-template-laravel-template-1 php artisan migrate:fresh",
-"migrate-seed": "docker exec -t laravel-template-laravel-template-1 php artisan migrate:fresh --seed",
-"migrate": "docker exec -t laravel-template-laravel-template-1 php artisan migrate",
-"rollback": "docker exec -t laravel-template-laravel-template-1 php artisan migrate:rollback",
-"seed": "docker exec -t laravel-template-laravel-template-1 php artisan db:seed",
+"migrate-fresh": "docker exec -t laravel-template-laravel-template-1 php artisan migrate:fresh --no-interaction --force",
+"migrate-seed": "docker exec -t laravel-template-laravel-template-1 php artisan migrate:fresh --seed --no-interaction --force",
+"migrate": "docker exec -t laravel-template-laravel-template-1 php artisan migrate --no-interaction --force",
+"rollback": "docker exec -t laravel-template-laravel-template-1 php artisan migrate:rollback --no-interaction --force",
+"seed": "docker exec -t laravel-template-laravel-template-1 php artisan db:seed --no-interaction --force",
 "test": "./bin/phpunit"
 ```
 
