@@ -39,7 +39,8 @@ Once Laravel is installed, replace text as needed throughout the project:
 ### Customization
 
 1. Change the `session` driver from file based to database
-2. (Optional) Change the `cache` driver from file based to Redis
+2. Change the logging from `stack` to `daily`
+3. (Optional) Change the `cache` driver from file based to Redis
 
 In the `composer.json` file, add the following:
 
