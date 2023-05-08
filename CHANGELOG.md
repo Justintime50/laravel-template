@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.6.0 (2023-05-08)
+
+- Adds `.dockerignore` file
+
 ## v0.5.1 (2023-01-28)
 
 - Clarifies various README instructions
