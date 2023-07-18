@@ -12,7 +12,7 @@ services:
     depends_on:
       - laravel-template-db
   laravel-template-db:
-    image: 'mariadb:10.10.3'
+    image: 'mariadb:10.11.4'
     restart: always
     volumes:
       - database-data:/var/lib/mysql
@@ -28,5 +28,6 @@ volumes:
 networks:
   traefik:
     name: traefik
+    external: true
   laravel-template:
     name: laravel-template
