@@ -1,6 +1,6 @@
 services:
   laravel-template:
     labels:
-      - "traefik.http.routers.laravel-template.rule=Host(`laravel-template.localhost`)"
+      - 'traefik.http.routers.laravel-template.rule=Host(`laravel-template.localhost`)'
     volumes:
       - ./src:/var/www/html

@@ -6,38 +6,42 @@
 #   docker:
 #     runs-on: ubuntu-latest
 #     steps:
-#       - name: Checkout Repository
-#         uses: actions/checkout@v3
-#       - name: Setup Traefik
-#         run: docker network create traefik
-#       - name: Setup Docker container
+#       - uses: actions/checkout@v3
+#       - uses: extractions/setup-just@v1
+#       - uses: shivammathur/setup-php@v2
+#         with:
+#           php-version: '8.2'
+#       - run: docker network create traefik
+#       - name: Run setup Docker container
 #         run: |
-#           cp src/.env-example src/.env && cp .env-example .env
-#           ./setup.sh
+#           cp .env-example .env
+#           cd src
+#           cp .env-example .env
+#           just setup
 #   lint:
 #     runs-on: ubuntu-latest
 #     steps:
-#       - name: Checkout Repository
-#         uses: actions/checkout@v3
-#       - name: Set up PHP
-#         uses: shivammathur/setup-php@v2
+#       - uses: actions/checkout@v3
+#       - uses: extractions/setup-just@v1
+#       - uses: shivammathur/setup-php@v2
 #         with:
-#           php-version: "8.2"
-#       - name: Install Composer
-#         run: cd src && composer self-update
-#       - name: Install Dependencies
-#         run: cd src && composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-#       - name: Lint
-#         run: cd src && composer lint
+#           php-version: '8.2'
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: '20'
+#       - name: Lint project
+#         run: |
+#           cd src
+#           just install lint
 #   deploy:
-#     needs: ["docker", "lint"]
+#     needs: ['docker', 'lint']
 #     runs-on: ubuntu-latest
 #     steps:
 #       - name: Deploy to Harvey
 #         if: github.ref == 'refs/heads/main'
 #         uses: distributhor/workflow-webhook@v2
 #         env:
-#           webhook_type: "json-extended"
+#           webhook_type: 'json-extended'
 #           webhook_url: ${{ secrets.WEBHOOK_URL }}
 #           webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
 #           data: '{ "pipeline": "deploy", "prod_compose": true, "healthcheck": ["laravel-template-laravel-template-1", "laravel-template-laravel-template-2", "laravel-template-laravel-template-db-1"] }'

@@ -47,11 +47,12 @@ In the `composer.json` file, add the following:
 1. `"bin-dir": "bin"` to the `config` section
 2. Install PHP CodeSniffer: `composer require --dev squizlabs/php_codesniffer`
 3. Install Justintime50 PHP styles via `npm install --save-dev justintime50-styles`
-4. The folllowing each to the `scripts` section:
+4. Correct prod and dev dependencies as production builds won't contain dev deps
+5. The folllowing each to the `scripts` section:
 
 ```json
 "coverage": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-html clover.html --coverage-clover clover.xml",
-"db-clean": "docker exec -t laravel-template-laravel-template-1 php artisan db:wipe",
+"clean-db": "docker exec -t laravel-template-laravel-template-1 php artisan db:wipe",
 "fix": "./bin/phpcbf --standard=./node_modules/justintime50-styles/src/php/phpcs.xml .",
 "lint": "./bin/phpcs --standard=./node_modules/justintime50-styles/src/php/phpcs.xml .",
 "migrate-fresh": "docker exec -t laravel-template-laravel-template-1 php artisan migrate:fresh --no-interaction --force",
@@ -69,8 +70,11 @@ In the `composer.json` file, add the following:
 mv src/.env.example src/.env-example
 cp src/.env-example src/.env && cp .env-example .env
 
+# Move the justfile location
+mv justfile src/justfile
+
 # Run the setup script which will bootstrap all the requirements, spin up the service, and migrate the database
-./setup.sh
+just setup
 ```
 
 ## Usage
@@ -82,10 +86,10 @@ cp src/.env-example src/.env && cp .env-example .env
 
 ```bash
 # Deploy the project locally
-docker compose up -d
+just run
 
 # Deploy the project in production
-docker compose -f docker-compose.yml -f docker-compose-prod.yml up -d
+just prod
 ```
 
 ## Development
@@ -93,25 +97,6 @@ docker compose -f docker-compose.yml -f docker-compose-prod.yml up -d
 The following commands may need to be manually added before they're ready to use.
 
 ```bash
-# Install dependencies
-composer install
-
-# Migrate the database
-composer migrate
-composer migrate-fresh
-
-# Clean the database
-composer db-clean
-
-# Seed the database
-composer seed
-
-# Lint the PHP files
-composer lint
-
-# Compile SASS and Javascript during development (will hot-reload)
-npm run dev
-
-# Compile for production
-npm run build
+# Get a comprehensive list of development tools
+just --list
 ```

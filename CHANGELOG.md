@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.7.0 (2023-08-09)
+
+- Overhauls Dockerfile to have separate build steps for prod and dev builds
+- Adds justfile
+- Auto-upgrades mysql on deployments to match Docker image version
+
 ## v0.6.0 (2023-05-08)
 
 - Adds `.dockerignore` file
