@@ -51,6 +51,7 @@ In the `composer.json` file, add the following:
 5. The folllowing each to the `scripts` section:
 
 ```json
+"clean": "rm -rf bin clover.html node_modules vendor *.cache .*.cache bootstrap/cache/*.php",
 "coverage": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-html clover.html --coverage-clover clover.xml",
 "clean-db": "docker exec -t laravel-template-laravel-template-1 php artisan db:wipe",
 "fix": "./bin/phpcbf --standard=./node_modules/justintime50-styles/src/php/phpcs.xml .",

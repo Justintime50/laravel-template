@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Adds `clean` script and just target
+
 ## v0.7.0 (2023-08-09)
 
 - Overhauls Dockerfile to have separate build steps for prod and dev builds
