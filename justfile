@@ -1,7 +1,6 @@
 # Clean the project
 clean:
     composer clean
-    
 # Clean the database
 clean-db:
     composer clean-db
@@ -70,3 +69,7 @@ seed:
 setup:
     #!/usr/bin/env bash
     bash <(curl -s https://gist.githubusercontent.com/Justintime50/2de9303a491c22627ee502aaa7b1f289/raw/) laravel-template laravel-template has_database
+
+# Test the project
+test:
+    composer test
