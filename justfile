@@ -1,6 +1,7 @@
 # Clean the project
 clean:
     composer clean
+
 # Clean the database
 clean-db:
     composer clean-db
