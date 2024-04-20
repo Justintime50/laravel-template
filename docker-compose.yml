@@ -7,6 +7,7 @@ services:
       - laravel-template
     labels:
       - traefik.enable=true
+      - 'traefik.docker.network=traefik'
     env_file:
       - src/.env
   laravel-template-db:
