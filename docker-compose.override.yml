@@ -2,5 +2,8 @@ services:
   laravel-template:
     labels:
       - 'traefik.http.routers.laravel-template.rule=Host(`laravel-template.localhost`)'
+    depends_on:
+      laravel-template-db:
+        condition: service_started
     volumes:
       - ./src:/var/www/html

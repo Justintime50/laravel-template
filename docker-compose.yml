@@ -9,10 +9,8 @@ services:
       - traefik.enable=true
     env_file:
       - src/.env
-    depends_on:
-      - laravel-template-db
   laravel-template-db:
-    image: 'mariadb:10.11.4'
+    image: 'mariadb:11.3.2'
     restart: always
     volumes:
       - database-data:/var/lib/mysql

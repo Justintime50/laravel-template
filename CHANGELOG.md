@@ -1,8 +1,14 @@
 # CHANGELOG
 
-## Next Release
+## v0.8.0 (2024-04-20)
 
 - Adds `clean` script and just target
+- Adds `start_interval` for better startup healthchecks
+- Overhauls healthchecks to be more accurate
+- Overhauls resource limits to be more streamlined
+- Bumps Dockerfile version used
+- Bumps mariadb
+- Various small template corrections and clarifications
 
 ## v0.7.0 (2023-08-09)
 
