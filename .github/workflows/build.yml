@@ -6,11 +6,11 @@
 #   docker:
 #     runs-on: ubuntu-latest
 #     steps:
-#       - uses: actions/checkout@v3
-#       - uses: extractions/setup-just@v1
+#       - uses: actions/checkout@v4
+#       - uses: extractions/setup-just@v2
 #       - uses: shivammathur/setup-php@v2
 #         with:
-#           php-version: '8.2'
+#           php-version: '8.3'
 #       - run: docker network create traefik
 #       - name: Run setup Docker container
 #         run: |
@@ -21,14 +21,14 @@
 #   lint:
 #     runs-on: ubuntu-latest
 #     steps:
-#       - uses: actions/checkout@v3
-#       - uses: extractions/setup-just@v1
+#       - uses: actions/checkout@v4
+#       - uses: extractions/setup-just@v2
 #       - uses: shivammathur/setup-php@v2
 #         with:
-#           php-version: '8.2'
+#           php-version: '8.3'
 #       - uses: actions/setup-node@v3
 #         with:
-#           node-version: '20'
+#           node-version: '22'
 #       - name: Lint project
 #         run: |
 #           cd src

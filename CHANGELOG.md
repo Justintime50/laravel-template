@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.9.0 (2024-06-10)
+
+- Updates items to follow patterns for Laravel 11
+
 ## v0.8.0 (2024-04-20)
 
 - Adds `clean` script and just target

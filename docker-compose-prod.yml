@@ -7,7 +7,7 @@ services:
       replicas: 2
     mem_limit: '512m'
     healthcheck:
-      test: ['CMD', 'curl', '--silent', '--output', '/dev/null', '--show-error', '--fail', 'http://localhost']
+      test: ['CMD', 'curl', '--silent', '--output', '/dev/null', '--show-error', '--fail', 'http://localhost/up']
       start_period: 10s
       start_interval: 1s
       interval: 30s
