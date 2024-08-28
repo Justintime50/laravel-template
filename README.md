@@ -46,9 +46,10 @@ In the `composer.json` file, add the following:
 
 1. `"bin-dir": "bin"` to the `config` section
 2. Install PHP CodeSniffer: `composer require --dev squizlabs/php_codesniffer`
-3. Install Justintime50 PHP styles via `npm install --save-dev justintime50-styles`
-4. Correct prod and dev dependencies as production builds won't contain dev deps
-5. Add the folllowing to the `scripts` section of the `composer.json` file:
+3. Install larastan: `composer require --dev larastan/larastan`
+4. Install Justintime50 PHP styles via `npm install --save-dev justintime50-styles`
+5. Correct prod and dev dependencies as production builds won't contain dev deps
+6. Add the folllowing to the `scripts` section of the `composer.json` file:
 
 ```json
 "clean": "rm -rf bin clover.html node_modules vendor *.cache .*.cache bootstrap/cache/*.php",
@@ -59,6 +60,7 @@ In the `composer.json` file, add the following:
 "migrate-fresh": "docker exec -t laravel-template-laravel-template-1 php artisan migrate:fresh --no-interaction --force",
 "migrate-seed": "docker exec -t laravel-template-laravel-template-1 php artisan migrate:fresh --seed --no-interaction --force",
 "migrate": "docker exec -t laravel-template-laravel-template-1 php artisan migrate --no-interaction --force",
+"phpstan": "./bin/phpstan analyse --memory-limit=2G",
 "rollback": "docker exec -t laravel-template-laravel-template-1 php artisan migrate:rollback --no-interaction --force",
 "seed": "docker exec -t laravel-template-laravel-template-1 php artisan db:seed --no-interaction --force",
 "test": "./bin/phpunit"
@@ -69,6 +71,19 @@ In the `composer.json` file, add the following:
 ```json
 "lint": "npx stylelint resources/sass/*.scss --config node_modules/justintime50-styles/src/css/.stylelintrc.json --custom-syntax postcss-scss",
 "fix": "npx stylelint resources/sass/*.scss --config node_modules/justintime50-styles/src/css/.stylelintrc.json --custom-syntax postcss-scss --fix"
+```
+
+7. Create a `phpstan.neon` file with the following content:
+
+```neon
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    paths:
+        - app/
+        - tests/
+    level: 5
 ```
 
 ## Install

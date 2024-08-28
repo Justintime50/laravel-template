@@ -20,7 +20,7 @@ install:
     npm install
 
 # Lint entire project
-lint: lint-php lint-css
+lint: lint-php lint-css phpstan
 
 # Lint the PHP files
 lint-php:
@@ -52,6 +52,10 @@ migrate-fresh:
 # Migrates and seeds the database
 migrate-seed:
     composer migrate-seed
+
+# Run static analysis on the project
+phpstan:
+    composer phpstan
 
 # Deploy the project for production
 prod:

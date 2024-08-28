@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Adds `larastan`
+
 ## v0.9.0 (2024-06-10)
 
 - Updates items to follow patterns for Laravel 11
