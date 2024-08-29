@@ -1,8 +1,10 @@
 # CHANGELOG
 
-## Next Release
+## v0.10.0 (2024-08-29)
 
 - Adds `larastan`
+- Excludes `.env` file from prod build
+- Bumps mariadb from `11.3.2` to `11.4.3`
 
 ## v0.9.0 (2024-06-10)
 

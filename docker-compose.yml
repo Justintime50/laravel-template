@@ -6,12 +6,12 @@ services:
       - traefik
       - laravel-template
     labels:
-      - traefik.enable=true
+      - 'traefik.enable=true'
       - 'traefik.docker.network=traefik'
     env_file:
       - src/.env
   laravel-template-db:
-    image: 'mariadb:11.3.2'
+    image: 'mariadb:11.4.3'
     restart: always
     volumes:
       - database-data:/var/lib/mysql

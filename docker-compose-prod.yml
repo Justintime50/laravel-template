@@ -16,7 +16,6 @@ services:
     labels:
       - 'traefik.http.routers.laravel-template.rule=Host(`laravel-template.com`) || Host(`www.laravel-template.com`)'
       - 'traefik.http.routers.laravel-template.tls=true'
-      - 'traefik.http.routers.laravel-template.tls.certresolver=letsencrypt'
     depends_on:
       laravel-template-db:
         condition: service_healthy
