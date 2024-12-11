@@ -8,15 +8,26 @@ services:
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=traefik'
+      - 'traefik.http.routers.laravel-template.rule=Host(`laravel-template.localhost`)'
+    depends_on:
+      laravel-template-db:
+        condition: service_started
+    volumes:
+      - ./src:/var/www/html
     env_file:
       - src/.env
+
   laravel-template-db:
-    image: 'mariadb:11.4.3'
+    image: 'mariadb:11.4.4'
     restart: always
     volumes:
       - database-data:/var/lib/mysql
-    env_file:
-      - .env
+    environment:
+      MARIADB_DATABASE: laravel-template
+      MARIADB_ROOT_PASSWORD: password
+      MARIADB_USER: laravel-template
+      MARIADB_PASSWORD: password
+      MARIADB_AUTO_UPGRADE: 1
     networks:
       - laravel-template
 
@@ -26,7 +37,6 @@ volumes:
 
 networks:
   traefik:
-    name: traefik
     external: true
   laravel-template:
     name: laravel-template

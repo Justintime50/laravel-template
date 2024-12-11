@@ -1,47 +1,20 @@
 # name: build
 
-# on: [push, pull_request]
+# on:
+#   workflow_run:
+#     workflows: ['ci']
+#     types:
+#       - completed
 
 # jobs:
-#   docker:
+#   build:
+#     if: ${{ github.ref == 'refs/heads/main' && github.event.workflow_run.conclusion == 'success' }}
 #     runs-on: ubuntu-latest
 #     steps:
 #       - uses: actions/checkout@v4
-#       - uses: extractions/setup-just@v2
-#       - uses: shivammathur/setup-php@v2
-#         with:
-#           php-version: '8.3'
-#       - run: docker network create traefik
-#       - name: Run setup Docker container
-#         run: |
-#           cp .env-example .env
-#           cd src
-#           cp .env-example .env
-#           just setup
-#   lint:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v4
-#       - uses: extractions/setup-just@v2
-#       - uses: shivammathur/setup-php@v2
-#         with:
-#           php-version: '8.3'
-#       - uses: actions/setup-node@v3
-#         with:
-#           node-version: '22'
-#       - name: Lint project
-#         run: |
-#           cd src
-#           just install lint
-#   deploy:
-#     needs: ['docker', 'lint']
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Deploy to Harvey
-#         if: github.ref == 'refs/heads/main'
-#         uses: distributhor/workflow-webhook@v2
-#         env:
-#           webhook_type: 'json-extended'
-#           webhook_url: ${{ secrets.WEBHOOK_URL }}
-#           webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
-#           data: '{ "pipeline": "deploy", "prod_compose": true, "healthcheck": ["laravel-template-laravel-template-1", "laravel-template-laravel-template-2", "laravel-template-laravel-template-db-1"] }'
+#       - name: Sign into Docker Registry
+#         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+#       - name: Build Docker image
+#         run: docker build -t ${{ secrets.DOCKER_REGISTRY_URL }}/laravel-template/laravel-template:${GITHUB_SHA} --build-arg PROD=true --platform linux/amd64 .
+#       - name: Push image to Registry
+#         run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/laravel-template/laravel-template:${GITHUB_SHA}

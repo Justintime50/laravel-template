@@ -4,7 +4,7 @@
 
 A Laravel project template to save you time and energy.
 
-[![Build](https://github.com/Justintime50/laravel-template/workflows/build/badge.svg)](https://github.com/Justintime50/laravel-template/actions)
+[![CI Status](https://github.com/Justintime50/laravel-template/workflows/ci/badge.svg)](https://github.com/Justintime50/laravel-template/actions)
 [![Licence](https://img.shields.io/github/license/justintime50/laravel-template)](LICENSE)
 
 <img src="https://raw.githubusercontent.com/justintime50/assets/main/src/laravel-template/showcase.png" alt="Showcase">
@@ -49,31 +49,7 @@ In the `composer.json` file, add the following:
 3. Install larastan: `composer require --dev larastan/larastan`
 4. Install Justintime50 PHP styles via `npm install --save-dev justintime50-styles`
 5. Correct prod and dev dependencies as production builds won't contain dev deps
-6. Add the folllowing to the `scripts` section of the `composer.json` file:
-
-```json
-"clean": "rm -rf bin clover.html node_modules vendor *.cache .*.cache bootstrap/cache/*.php",
-"coverage": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-html clover.html --coverage-clover clover.xml",
-"clean-db": "docker exec -t laravel-template-laravel-template-1 php artisan db:wipe",
-"fix": "./bin/phpcbf --standard=./node_modules/justintime50-styles/src/php/phpcs.xml .",
-"lint": "./bin/phpcs --standard=./node_modules/justintime50-styles/src/php/phpcs.xml .",
-"migrate-fresh": "docker exec -t laravel-template-laravel-template-1 php artisan migrate:fresh --no-interaction --force",
-"migrate-seed": "docker exec -t laravel-template-laravel-template-1 php artisan migrate:fresh --seed --no-interaction --force",
-"migrate": "docker exec -t laravel-template-laravel-template-1 php artisan migrate --no-interaction --force",
-"phpstan": "./bin/phpstan analyse --memory-limit=2G",
-"rollback": "docker exec -t laravel-template-laravel-template-1 php artisan migrate:rollback --no-interaction --force",
-"seed": "docker exec -t laravel-template-laravel-template-1 php artisan db:seed --no-interaction --force",
-"test": "./bin/phpunit"
-```
-
-6. Add the following to the `scripts` section of the `package.json` file:
-
-```json
-"lint": "npx stylelint resources/sass/*.scss --config node_modules/justintime50-styles/src/css/.stylelintrc.json --custom-syntax postcss-scss",
-"fix": "npx stylelint resources/sass/*.scss --config node_modules/justintime50-styles/src/css/.stylelintrc.json --custom-syntax postcss-scss --fix"
-```
-
-7. Create a `phpstan.neon` file with the following content:
+6. Create a `phpstan.neon` file with the following content:
 
 ```neon
 includes:
