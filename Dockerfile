@@ -1,9 +1,10 @@
-FROM justintime50/nginx-php:8.4-34
+FROM justintime50/nginx-php:8.5-37
 
 ARG PROD
 ENV PROD=$PROD
 
 COPY --chown=www-data:www-data ./src /var/www/html
+COPY docker/supervisor/ /etc/supervisor/conf.d/
 
 RUN if [ -n "$PROD" ]; then \
     # Setup prod env

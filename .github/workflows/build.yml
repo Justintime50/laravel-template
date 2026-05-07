@@ -2,7 +2,7 @@
 
 # on:
 #   workflow_run:
-#     workflows: ['ci']
+#     workflows: [ 'ci' ]
 #     types:
 #       - completed
 
@@ -11,10 +11,10 @@
 #     if: ${{ github.ref == 'refs/heads/main' && github.event.workflow_run.conclusion == 'success' }}
 #     runs-on: ubuntu-latest
 #     steps:
-#       - uses: actions/checkout@v4
-#       - name: Sign into Docker Registry
-#         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-#       - name: Build Docker image
-#         run: docker build -t ${{ secrets.DOCKER_REGISTRY_URL }}/laravel-template/laravel-template:${GITHUB_SHA} --build-arg PROD=true --platform linux/amd64 .
-#       - name: Push image to Registry
-#         run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/laravel-template/laravel-template:${GITHUB_SHA}
+#       - uses: justintime50/composite-actions/publish-private-image@v1
+#         with:
+#           registry_url: ${{ secrets.DOCKER_REGISTRY_URL }}
+#           username: ${{ secrets.DOCKER_USERNAME }}
+#           password: ${{ secrets.DOCKER_PASSWORD }}
+#           image_name: justintime50/laravel-template
+#           image_tag: ${GITHUB_SHA}

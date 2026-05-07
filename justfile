@@ -1,5 +1,5 @@
 PHP_BIN := "bin"
-STYLES_DIR := "node_modules/justintime50-styles/src"
+STYLES_DIR := "vendor/justintime50/styles/src"
 PROJECT_NAME := "laravel-template"
 DOCKER_CONTAINER_NAME := `docker ps --filter "name=laravel-template" --format "{{.ID}}" | head -n 1`
 DOCKER_DB_CONTAINER_NAME := `docker ps --filter "name=laravel-template-db" --format "{{.ID}}" | head -n 1`
@@ -18,15 +18,28 @@ clean-db:
 
 # Run a coverage report
 coverage:
-    XDEBUG_MODE=coverage ./{{PHP_BIN}}/phpunit --coverage-html clover.html --coverage-clover clover.xml
+    XDEBUG_MODE=coverage ./{{PHP_BIN}}/phpunit --coverage-html clover.html --coverage-clover build/logs/clover.xml && bin/coverage-check build/logs/clover.xml 84 --only-percentage
+
+# Run browser tests
+dusk filter='':
+    php artisan dusk {{filter}}
+
+# Format the JS files
+format-js:
+    npx prettier --config {{STYLES_DIR}}/javascript/.prettierrc.yaml --check resources/js/**
+
+# Fixes the formatting of the JS files
+format-js-fix:
+    npx prettier --config {{STYLES_DIR}}/javascript/.prettierrc.yaml --write resources/js/**
 
 # Install dependencies
 install:
     composer install
     npm install
+    php artisan dusk:chrome-driver --detect
 
 # Lint entire project
-lint: lint-php lint-css phpstan
+lint: lint-php lint-css lint-js format-js phpstan
 
 # Lint the PHP files
 lint-php:
@@ -34,10 +47,14 @@ lint-php:
 
 # Lint the SASS files
 lint-css:
-    npx stylelint resources/sass/*.scss --config {{STYLES_DIR}}/css/.stylelintrc.json --custom-syntax postcss-scss
+    npx stylelint resources/sass/** --config {{STYLES_DIR}}/css/.stylelintrc.json --custom-syntax postcss-scss
+
+# Lint the JS files
+lint-js:
+    npx eslint -c {{STYLES_DIR}}/javascript/eslint.config.js resources/js/**
 
 # Fix all linting issues
-lint-fix: lint-php-fix lint-css-fix
+lint-fix: lint-php-fix lint-css-fix lint-js-fix format-js-fix
 
 # Fix PHP linting
 lint-php-fix:
@@ -45,7 +62,11 @@ lint-php-fix:
 
 # Fix SASS linting
 lint-css-fix:
-    npx stylelint resources/sass/*.scss --config {{STYLES_DIR}}/css/.stylelintrc.json --custom-syntax postcss-scss --fix
+    npx stylelint resources/sass/** --config {{STYLES_DIR}}/css/.stylelintrc.json --custom-syntax postcss-scss --fix
+
+# Fix JS linting
+lint-js-fix:
+    npx eslint -c {{STYLES_DIR}}/javascript/eslint.config.js resources/js/** --fix
 
 # Migrates the database
 migrate:
@@ -68,6 +89,10 @@ run:
     docker compose up -d
     npx vite
 
+# Run the app outside of Docker
+run-local:
+    php artisan serve --port=8686
+
 # Seeds the database
 seed:
     docker exec -t {{DOCKER_CONTAINER_NAME}} php artisan db:seed --no-interaction --force
@@ -86,5 +111,8 @@ shell-db:
     docker exec -it {{DOCKER_DB_CONTAINER_NAME}} bash
 
 # Tests the project
-test:
-    ./{{PHP_BIN}}/phpunit
+test: unit dusk
+
+# Run unit tests
+unit filter='':
+    ./{{PHP_BIN}}/phpunit {{filter}}

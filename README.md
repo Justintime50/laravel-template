@@ -17,8 +17,8 @@ A Laravel project template to save you time and energy.
 
 <img src="https://raw.githubusercontent.com/justintime50/assets/main/src/templates/use_template_button.png" alt="Showcase">
 
-2. After using the template, clone the repo
-3. Laravel Template assumes you have `composer` installed globally:
+1. After using the template, clone the repo
+2. Laravel Template assumes you have `composer` installed globally:
 
 ```bash
 # Install Laravel into a `src` directory
@@ -38,9 +38,14 @@ Once Laravel is installed, replace text as needed throughout the project:
 
 ### Customization
 
-1. Change the `session` driver from file based to database
-2. Change the logging from `stack` to `daily`
-3. (Optional) Change the `cache` driver from file based to Redis
+1. Change the logging to `daily`
+2. Change the `session` driver to `database`:
+   1. `php artisan make:session-table`
+3. Change the `cache` driver to `database`:
+   1. `php artisan make:cache-table`
+4. Change the `queue` driver to `database`:
+   1. `php artisan make:queue-table`
+   2. `php artisan make:queue-failed-table`
 
 In the `composer.json` file, add the following:
 
