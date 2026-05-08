@@ -22,7 +22,7 @@ services:
     image: 'mariadb:11.4.7'
     restart: always
     volumes:
-      - database-data:/var/lib/mysql
+      - laravel-template-db:/var/lib/mysql
       # - './docker/mysql:/docker-entrypoint-initdb.d'
     environment:
       MARIADB_DATABASE: laravel-template

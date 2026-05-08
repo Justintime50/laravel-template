@@ -36,7 +36,7 @@ format-js-fix:
 install:
     composer install
     npm install
-    php artisan dusk:chrome-driver --detect
+    # php artisan dusk:chrome-driver --detect
 
 # Lint entire project
 lint: lint-php lint-css lint-js format-js phpstan
